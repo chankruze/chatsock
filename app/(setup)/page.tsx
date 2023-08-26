@@ -8,6 +8,7 @@ Copyright (c) geekofia 2023 and beyond
 import InitialModal from '@/components/modals/initial-modal';
 import { prisma } from '@/lib/db';
 import { initialProfile } from '@/lib/initial-profile';
+
 import { redirect } from 'next/navigation';
 
 export default async function page() {

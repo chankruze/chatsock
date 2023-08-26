@@ -7,7 +7,6 @@ Copyright (c) geekofia 2023 and beyond
 
 import { redirectToSignIn } from '@clerk/nextjs';
 
-import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { currentProfile } from '@/lib/current-profile';
 import { prisma } from '@/lib/db';
 
@@ -54,11 +53,9 @@ const ServerIdPage = async ({ params }: ServerIdPageProps) => {
   // TODO: uncomment this
   // return redirect(`/servers/${params.serverId}/channels/${initialChannel?.id}`);
   return (
-    <Dialog open>
-      <DialogContent>
-        <pre className="overflow-auto">{JSON.stringify(server, null, 2)}</pre>
-      </DialogContent>
-    </Dialog>
+    <div>
+      <pre className="overflow-auto">{JSON.stringify(server, null, 2)}</pre>
+    </div>
   );
 };
 

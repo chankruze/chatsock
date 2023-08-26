@@ -5,8 +5,9 @@ Created: Sat Aug 26 2023 08:06:53 GMT-0400 (Eastern Daylight Time)
 Copyright (c) geekofia 2023 and beyond
 */
 
-import { prisma } from '@/lib/db';
 import { currentUser, redirectToSignIn } from '@clerk/nextjs';
+
+import { prisma } from '@/lib/db';
 
 export async function initialProfile() {
   const user = await currentUser();
