@@ -15,11 +15,11 @@ import { cn } from '@/lib/utils';
 
 interface NavigationItemProps {
   id: string;
-  imageUrl: string;
+  icon: string;
   name: string;
 }
 
-export const NavigationItem = ({ id, imageUrl, name }: NavigationItemProps) => {
+export const NavigationItem = ({ id, icon, name }: NavigationItemProps) => {
   const params = useParams();
   const router = useRouter();
 
@@ -44,7 +44,7 @@ export const NavigationItem = ({ id, imageUrl, name }: NavigationItemProps) => {
               'rounded-[16px] bg-primary/10 text-primary'
           )}
         >
-          <Image fill src={imageUrl} alt="Channel" />
+          <Image fill src={icon} alt="Channel" />
         </div>
       </button>
     </ActionTooltip>
