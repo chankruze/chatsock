@@ -1,3 +1,4 @@
+import { ThemeToggle } from '@/components/theme-toggle';
 import { UserButton } from '@clerk/nextjs';
 
 export default function Home() {
@@ -5,6 +6,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center gap-6 p-24">
       This is the protected page!
       <UserButton afterSignOutUrl="/" />
+      <ThemeToggle />
     </main>
   );
 }
