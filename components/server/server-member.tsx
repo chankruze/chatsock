@@ -8,7 +8,7 @@ Copyright (c) geekofia 2023 and beyond
 'use client';
 
 import { Member, MemberRole, Profile, Server } from '@prisma/client';
-import { Crown, ShieldCheck, Verified } from 'lucide-react';
+import { Crown, Shield, ShieldCheck } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
 
 import { UserAvatar } from '@/components/user-avatar';
@@ -22,9 +22,11 @@ interface ServerMemberProps {
 const roleIconMap = {
   [MemberRole.MEMBER]: null,
   [MemberRole.MODERATOR]: (
-    <ShieldCheck className="ml-2 h-4 w-4 text-indigo-500" />
+    <Shield className="ml-auto h-4 w-4 text-yellow-500" />
   ),
-  [MemberRole.ADMIN]: <Verified className="ml-2 h-4 w-4 text-red-500" />,
+  [MemberRole.ADMIN]: (
+    <ShieldCheck className="ml-auto h-4 w-4 text-indigo-500" />
+  ),
 };
 
 export const ServerMember = ({ member, server }: ServerMemberProps) => {
@@ -33,7 +35,7 @@ export const ServerMember = ({ member, server }: ServerMemberProps) => {
 
   const icon =
     server.ownerId === member.profileId ? (
-      <Crown className="ml-2 h-4 w-4 text-yellow-500" />
+      <Crown className="ml-auto h-4 w-4 text-yellow-500" />
     ) : (
       roleIconMap[member.role]
     );
