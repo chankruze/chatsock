@@ -15,6 +15,7 @@ import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
@@ -66,13 +67,16 @@ export const ServerInviteModal = () => {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
-      <DialogContent className="overflow-hidden bg-white p-0 text-black">
-        <DialogHeader className="px-6 pt-8">
-          <DialogTitle className="text-center text-2xl font-bold">
+      <DialogContent className="overflow-hidden bg-white p-6 text-black">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-bold">
             Invite Friends
           </DialogTitle>
+          <DialogDescription className="text-zinc-500">
+            Use this link to invite people to your server.
+          </DialogDescription>
         </DialogHeader>
-        <div className="p-6">
+        <div>
           <Label className="text-xs font-bold uppercase text-zinc-500 dark:text-secondary/70">
             Server invite link
           </Label>
@@ -97,7 +101,7 @@ export const ServerInviteModal = () => {
               disabled={isLoading}
               variant="link"
               size="sm"
-              className="mt-4 text-xs text-zinc-500"
+              className="mt-4 p-0 text-xs text-zinc-500"
             >
               Generate a new link
               <RefreshCw

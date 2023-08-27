@@ -48,16 +48,14 @@ export const ServerHeader = ({ server, role }: ServerHeaderProps) => {
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 space-y-[2px] text-xs font-medium text-black dark:text-neutral-400">
-        {/* moderator action - Invite People */}
-        {isModerator ? (
-          <DropdownMenuItem
-            onClick={() => onOpen('invite', { server, role })}
-            className="cursor-pointer px-3 py-2 text-sm text-indigo-600 dark:text-indigo-400"
-          >
-            Invite People
-            <UserPlus className="ml-auto h-4 w-4" />
-          </DropdownMenuItem>
-        ) : null}
+        {/* member action - Invite People */}
+        <DropdownMenuItem
+          onClick={() => onOpen('invite', { server, role })}
+          className="cursor-pointer px-3 py-2 text-sm text-indigo-600 dark:text-indigo-400"
+        >
+          Invite People
+          <UserPlus className="ml-auto h-4 w-4" />
+        </DropdownMenuItem>
 
         {/* moderator action - Create Channel */}
         {isModerator ? (
@@ -104,6 +102,8 @@ export const ServerHeader = ({ server, role }: ServerHeaderProps) => {
             <Trash className="ml-auto h-4 w-4" />
           </DropdownMenuItem>
         )}
+
+        {!isAdmin ? <DropdownMenuSeparator /> : null}
 
         {/* member action - Leave Server */}
         {!isAdmin ? (

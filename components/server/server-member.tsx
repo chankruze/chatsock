@@ -19,7 +19,7 @@ interface ServerMemberProps {
   server: Server;
 }
 
-export const roleIconMap = {
+const roleIconMap = {
   [MemberRole.MEMBER]: null,
   [MemberRole.MODERATOR]: (
     <ShieldCheck className="ml-2 h-4 w-4 text-indigo-500" />
