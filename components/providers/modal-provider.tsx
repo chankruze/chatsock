@@ -10,6 +10,7 @@ Copyright (c) geekofia 2023 and beyond
 import { useEffect, useState } from 'react';
 
 import { CreateServerModal } from '@/components/modals/create-server-modal';
+import { EditServerModal } from '@/components/modals/edit-server-modal';
 import { ServerInviteModal } from '@/components/modals/server-invite-modal';
 
 export const ModalProvider = () => {
@@ -29,6 +30,7 @@ export const ModalProvider = () => {
     <>
       <CreateServerModal />
       <ServerInviteModal />
+      <EditServerModal />
     </>
   );
 };
