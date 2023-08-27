@@ -44,7 +44,14 @@ export const NavigationItem = ({ id, icon, name }: NavigationItemProps) => {
               'rounded-[16px] bg-primary/10 text-primary'
           )}
         >
-          <Image fill src={icon} alt="Channel" />
+          <Image
+            fill
+            src={icon}
+            alt={`${name} server icon`}
+            style={{
+              objectFit: 'cover',
+            }}
+          />
         </div>
       </button>
     </ActionTooltip>
