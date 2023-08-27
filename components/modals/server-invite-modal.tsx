@@ -13,27 +13,32 @@ import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useModal } from '@/hooks/use-modal-store';
 import { useOrigin } from '@/hooks/use-origin';
+import { cn } from '@/lib/utils';
+import { MemberRole } from '@prisma/client';
 
 export const ServerInviteModal = () => {
   const { onOpen, isOpen, onClose, type, data } = useModal();
   const origin = useOrigin();
 
   const isModalOpen = isOpen && type === 'invite';
-  const { server } = data;
 
   const [copied, setCopied] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const inviteUrl = `${origin}/invite/${server?.inviteCode}`;
+  const { server, role } = data;
+
+  if (!server) return null;
+
+  const inviteUrl = `${origin}/invite/${server.inviteCode}`;
 
   const onCopy = () => {
     navigator.clipboard.writeText(inviteUrl);
@@ -48,12 +53,12 @@ export const ServerInviteModal = () => {
     try {
       setIsLoading(true);
       const response = await axios.patch(
-        `/api/servers/${server?.id}/invite-code`
+        `/api/servers/${server.id}/invite-code`
       );
 
-      onOpen('invite', { server: response.data });
+      onOpen('invite', { server: response.data, role });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
@@ -85,16 +90,21 @@ export const ServerInviteModal = () => {
               )}
             </Button>
           </div>
-          <Button
-            onClick={onNew}
-            disabled={isLoading}
-            variant="link"
-            size="sm"
-            className="mt-4 text-xs text-zinc-500"
-          >
-            Generate a new link
-            <RefreshCw className="ml-2 h-4 w-4" />
-          </Button>
+          {/* if the user is admin, show generate new invite code button */}
+          {role === MemberRole.ADMIN ? (
+            <Button
+              onClick={onNew}
+              disabled={isLoading}
+              variant="link"
+              size="sm"
+              className="mt-4 text-xs text-zinc-500"
+            >
+              Generate a new link
+              <RefreshCw
+                className={cn('ml-2 h-4 w-4', isLoading ? 'animate-spin' : '')}
+              />
+            </Button>
+          ) : null}
         </div>
       </DialogContent>
     </Dialog>

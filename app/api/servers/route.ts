@@ -26,7 +26,7 @@ export async function POST(req: Request) {
         ownerId: profile.id,
         name,
         icon,
-        inviteCode: nanoid(6),
+        inviteCode: nanoid(8),
         channels: {
           create: [{ name: 'general', creatorId: profile.id }],
         },

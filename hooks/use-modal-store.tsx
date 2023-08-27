@@ -23,6 +23,7 @@ export type ModalType =
 
 interface ModalData {
   server?: Server;
+  role?: string;
   channel?: Channel;
   channelType?: ChannelType;
   apiUrl?: string;

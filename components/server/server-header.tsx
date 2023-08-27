@@ -43,7 +43,7 @@ export const ServerHeader = ({ server, role }: ServerHeaderProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger className="focus:outline-none" asChild>
         <button className="text-md flex h-12 w-full items-center border-b-2 border-neutral-200 px-3 font-semibold transition hover:bg-zinc-700/10 dark:border-neutral-800 dark:hover:bg-zinc-700/50">
-          <span className='line-clamp-1 text-start'>{server.name}</span>
+          <span className="line-clamp-1 text-start">{server.name}</span>
           <ChevronDown className="ml-auto h-5 w-5" />
         </button>
       </DropdownMenuTrigger>
@@ -51,7 +51,7 @@ export const ServerHeader = ({ server, role }: ServerHeaderProps) => {
         {/* moderator action - Invite People */}
         {isModerator ? (
           <DropdownMenuItem
-            onClick={() => onOpen('invite', { server })}
+            onClick={() => onOpen('invite', { server, role })}
             className="cursor-pointer px-3 py-2 text-sm text-indigo-600 dark:text-indigo-400"
           >
             Invite People
