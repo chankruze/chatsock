@@ -8,6 +8,8 @@ Copyright (c) geekofia 2023 and beyond
 import { redirectToSignIn } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 
+import { ServerSidebarLeft } from '@/components/server/server-sidebar-left';
+import { ServerSidebarRight } from '@/components/server/server-sidebar-right';
 import { currentProfile } from '@/lib/current-profile';
 import { prisma } from '@/lib/db';
 
@@ -40,11 +42,17 @@ const ServerIdLayout = async ({
   }
 
   return (
-    <div className="h-full">
-      <div className="bg-server-sidebar bg-serv fixed inset-y-0 z-20 hidden h-full w-60 flex-col md:flex">
-        <p>Channels</p>
+    <div className="h-full relative">
+      <div className="fixed inset-y-0 z-20 hidden h-full w-[var(--server-sidebar-width)] flex-col md:flex">
+        <ServerSidebarLeft serverId={params.serverId} />
       </div>
-      <main className="h-full md:pl-60">{children}</main>
+      <main className="h-full md:px-[var(--server-sidebar-width)]">
+        {children}
+      </main>
+      {/* TODO: another side panel for members */}
+      <div className="fixed inset-y-0 right-0 z-20 hidden h-full w-[var(--server-sidebar-width)] flex-col bg-server-sidebar md:flex">
+        <ServerSidebarRight serverId={params.serverId} />
+      </div>
     </div>
   );
 };

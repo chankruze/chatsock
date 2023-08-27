@@ -39,6 +39,7 @@
     /* sizes */
     --radius: 0.5rem; /* 8px */
     --side-nav-width: 4.5rem; /* 72px */
+    --server-sidebar-width: 15rem; /* 240px */
   }
 
   .dark {
