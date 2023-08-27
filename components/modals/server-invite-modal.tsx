@@ -86,7 +86,12 @@ export const ServerInviteModal = () => {
               className="border-0 bg-zinc-300/50 text-black focus-visible:ring-0 focus-visible:ring-offset-0"
               value={inviteUrl}
             />
-            <Button disabled={isLoading} onClick={onCopy} size="icon">
+            <Button
+              disabled={isLoading}
+              onClick={onCopy}
+              size="icon"
+              variant="primary"
+            >
               {copied ? (
                 <Check className="h-4 w-4" />
               ) : (

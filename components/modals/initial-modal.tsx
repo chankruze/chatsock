@@ -42,6 +42,7 @@ const formSchema = z.object({
 });
 
 export default function InitialModal() {
+  const [isOpen, setIsOpen] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
 
   const router = useRouter();
@@ -65,6 +66,7 @@ export default function InitialModal() {
     try {
       await axios.post('/api/servers', values);
       form.reset();
+      setIsOpen(false);
       router.refresh();
       window.location.reload();
     } catch (error) {
@@ -77,13 +79,13 @@ export default function InitialModal() {
   }
 
   return (
-    <Dialog open>
-      <DialogContent>
+    <Dialog open={isOpen}>
+      <DialogContent className="overflow-hidden bg-white p-6 text-black">
         <DialogHeader>
-          <DialogTitle className="text-2xl capitalize">
-            Create your server
+          <DialogTitle className="text-start text-2xl font-bold capitalize">
+            create your first server
           </DialogTitle>
-          <DialogDescription className="text-zinc-500">
+          <DialogDescription className="text-start text-zinc-500">
             Give your server a personality with a name and an image. You can
             always change it later.
           </DialogDescription>
@@ -119,7 +121,7 @@ export default function InitialModal() {
                   <FormControl>
                     <Input
                       disabled={isLoading}
-                      className="border-0 bg-input focus-visible:ring-0 focus-visible:ring-offset-0"
+                      className="border-0 bg-zinc-300/50 text-black focus-visible:ring-0 focus-visible:ring-offset-0"
                       placeholder="Enter server name"
                       {...field}
                     />
@@ -129,7 +131,7 @@ export default function InitialModal() {
               )}
             />
             <DialogFooter>
-              <Button variant="default" disabled={disableInput}>
+              <Button variant="primary" disabled={disableInput}>
                 Create
               </Button>
             </DialogFooter>

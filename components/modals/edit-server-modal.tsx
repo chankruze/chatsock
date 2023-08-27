@@ -89,7 +89,7 @@ export const EditServerModal = () => {
     <Dialog open={isModalOpen} onOpenChange={handleClose}>
       <DialogContent className="overflow-hidden bg-white p-6 text-black">
         <DialogHeader>
-          <DialogTitle className="capitalize text-2xl font-bold">
+          <DialogTitle className="text-2xl font-bold capitalize">
             Customize your server
           </DialogTitle>
           <DialogDescription className="text-zinc-500">
@@ -139,7 +139,9 @@ export const EditServerModal = () => {
               />
             </div>
             <DialogFooter>
-              <Button disabled={isLoading}>Save</Button>
+              <Button variant="primary" disabled={isLoading}>
+                Save
+              </Button>
             </DialogFooter>
           </form>
         </Form>

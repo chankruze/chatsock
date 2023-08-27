@@ -79,19 +79,19 @@ export const CreateServerModal = () => {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={handleClose}>
-      <DialogContent className="overflow-hidden p-0">
-        <DialogHeader className="px-6 pt-8">
-          <DialogTitle className="text-center text-2xl font-bold capitalize">
+      <DialogContent className="overflow-hidden bg-white p-6 text-black">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-bold capitalize">
             create your server
           </DialogTitle>
-          <DialogDescription className="text-center text-zinc-500">
+          <DialogDescription className="text-zinc-500">
             Give your server a personality with a name and an image. You can
             always change it later.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <div className="space-y-8 px-6">
+            <div className="space-y-8">
               <div className="flex items-center justify-center text-center">
                 <FormField
                   control={form.control}
@@ -121,7 +121,7 @@ export const CreateServerModal = () => {
                     <FormControl>
                       <Input
                         disabled={isLoading}
-                        className="border-0 bg-input focus-visible:ring-0 focus-visible:ring-offset-0"
+                        className="border-0 bg-zinc-300/50 text-black focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter server name"
                         {...field}
                       />
@@ -131,8 +131,8 @@ export const CreateServerModal = () => {
                 )}
               />
             </div>
-            <DialogFooter className="px-6 py-4">
-              <Button variant="default" disabled={disableInput}>
+            <DialogFooter>
+              <Button variant="primary" disabled={disableInput}>
                 Create
               </Button>
             </DialogFooter>
