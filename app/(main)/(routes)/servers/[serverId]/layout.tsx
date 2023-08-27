@@ -41,7 +41,9 @@ const ServerIdLayout = async ({
 
   return (
     <div className="h-full">
-      <div className="fixed inset-y-0 z-20 hidden h-full w-60 flex-col md:flex"></div>
+      <div className="bg-server-sidebar bg-serv fixed inset-y-0 z-20 hidden h-full w-60 flex-col md:flex">
+        <p>Channels</p>
+      </div>
       <main className="h-full md:pl-60">{children}</main>
     </div>
   );

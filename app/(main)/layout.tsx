@@ -10,10 +10,10 @@ import { NavigationSidebar } from '@/components/navigation/navigation-sidebar';
 const MainLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="h-full">
-      <div className="fixed inset-y-0 z-30 hidden h-full w-[var(--side-nav-width)] flex-col bg-red-300 md:flex">
+      <div className="fixed inset-y-0 z-30 hidden h-full w-[var(--side-nav-width)] flex-col md:flex">
         <NavigationSidebar />
       </div>
-      <main className="h-full bg-blue-400 md:pl-[var(--side-nav-width)]">
+      <main className="h-full md:pl-[var(--side-nav-width)]">
         {children}
       </main>
     </div>

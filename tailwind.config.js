@@ -50,6 +50,14 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        sidenav: {
+          DEFAULT: "hsl(var(--side-nav))",
+          foreground: "hsl(var(--side-nav-foreground))",
+        },
+        "server-sidebar": {
+          DEFAULT: "hsl(var(--server-sidebar))",
+          foreground: "hsl(var(--server-sidebar-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
