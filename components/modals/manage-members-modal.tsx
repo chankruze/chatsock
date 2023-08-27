@@ -10,37 +10,37 @@ Copyright (c) geekofia 2023 and beyond
 import { MemberRole } from '@prisma/client';
 import axios from 'axios';
 import {
-    Check,
-    Crown,
-    Gavel,
-    Loader2,
-    MoreVertical,
-    Shield,
-    ShieldCheck,
-    ShieldQuestion,
-    User,
+  Check,
+  Crown,
+  Gavel,
+  Loader2,
+  MoreVertical,
+  Shield,
+  ShieldCheck,
+  ShieldQuestion,
+  User,
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import qs from 'query-string';
 import { useState } from 'react';
 
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
 } from '@/components/ui/dialog';
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuPortal,
-    DropdownMenuSeparator,
-    DropdownMenuSub,
-    DropdownMenuSubContent,
-    DropdownMenuSubTrigger,
-    DropdownMenuTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { UserAvatar } from '@/components/user-avatar';
@@ -49,8 +49,8 @@ import { ServerWithMembersWithProfiles } from '@/types';
 
 const roleIconMap = {
   MEMBER: null,
-  MODERATOR: <Shield className="ml-2 h-4 w-4 text-yellow-500" />,
-  ADMIN: <ShieldCheck className="h-4 w-4 text-indigo-500" />,
+  MODERATOR: <Shield className="ml-2 h-4 w-4 text-blue-500" />,
+  ADMIN: <ShieldCheck className="h-4 w-4 text-yellow-500" />,
 };
 
 export const ManageMembersModal = () => {

@@ -57,6 +57,8 @@ export const ServerHeader = ({ server, role }: ServerHeaderProps) => {
           <UserPlus className="ml-auto h-4 w-4" />
         </DropdownMenuItem>
 
+        {role === MemberRole.MEMBER ? <DropdownMenuSeparator /> : null}
+
         {/* moderator action - Create Channel */}
         {isModerator ? (
           <DropdownMenuItem
@@ -102,8 +104,6 @@ export const ServerHeader = ({ server, role }: ServerHeaderProps) => {
             <Trash className="ml-auto h-4 w-4" />
           </DropdownMenuItem>
         )}
-
-        {!isAdmin ? <DropdownMenuSeparator /> : null}
 
         {/* member action - Leave Server */}
         {!isAdmin ? (

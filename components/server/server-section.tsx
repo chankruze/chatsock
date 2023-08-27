@@ -8,7 +8,7 @@ Copyright (c) geekofia 2023 and beyond
 'use client';
 
 import { ChannelType, MemberRole } from '@prisma/client';
-import { Minus, Plus, Settings } from 'lucide-react';
+import { Minus, Plus } from 'lucide-react';
 
 import { ActionTooltip } from '@/components/action-tooltip';
 import { useModal } from '@/hooks/use-modal-store';
@@ -54,7 +54,8 @@ export const ServerSection = ({
           </button>
         </ActionTooltip>
       )}
-      {role === MemberRole.ADMIN && sectionType === 'members' && (
+      {/* disable the manage members button for now */}
+      {/* {role === MemberRole.ADMIN && sectionType === 'members' && (
         <ActionTooltip label="Manage Members" side="top">
           <button
             onClick={() => onOpen('members', { server })}
@@ -63,7 +64,7 @@ export const ServerSection = ({
             <Settings className="h-4 w-4" />
           </button>
         </ActionTooltip>
-      )}
+      )} */}
     </div>
   );
 };

@@ -21,11 +21,9 @@ interface ServerMemberProps {
 
 const roleIconMap = {
   [MemberRole.MEMBER]: null,
-  [MemberRole.MODERATOR]: (
-    <Shield className="ml-auto h-4 w-4 text-yellow-500" />
-  ),
+  [MemberRole.MODERATOR]: <Shield className="ml-auto h-4 w-4 text-blue-500" />,
   [MemberRole.ADMIN]: (
-    <ShieldCheck className="ml-auto h-4 w-4 text-indigo-500" />
+    <ShieldCheck className="ml-auto h-4 w-4 text-yellow-500" />
   ),
 };
 
@@ -49,7 +47,9 @@ export const ServerMember = ({ member, server }: ServerMemberProps) => {
       onClick={onClick}
       className={cn(
         'group mb-1 flex w-full items-center gap-x-2 rounded-md px-2 py-2 transition hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50',
-        params?.memberId === member.id && 'bg-zinc-700/20 dark:bg-zinc-700'
+        params?.memberId === member.id && 'bg-zinc-700/20 dark:bg-zinc-700',
+        member.role === MemberRole.ADMIN && 'dark:hover:bg-yellow-900/30',
+        member.role === MemberRole.MODERATOR && 'dark:hover:bg-blue-900/30'
       )}
     >
       <UserAvatar
@@ -60,7 +60,11 @@ export const ServerMember = ({ member, server }: ServerMemberProps) => {
         className={cn(
           'line-clamp-1 text-start text-sm font-semibold text-zinc-500 transition group-hover:text-zinc-600 dark:text-zinc-400 dark:group-hover:text-zinc-300',
           params?.memberId === member.id &&
-            'text-primary dark:text-zinc-200 dark:group-hover:text-white'
+            'text-primary dark:text-zinc-200 dark:group-hover:text-white',
+          member.role === MemberRole.ADMIN &&
+            'text-yellow-500 group-hover:text-yellow-600 dark:text-yellow-400 dark:group-hover:text-yellow-300',
+          member.role === MemberRole.MODERATOR &&
+            'text-blue-500 group-hover:text-blue-600 dark:text-blue-400 dark:group-hover:text-blue-300'
         )}
       >
         {member.profile.name}
