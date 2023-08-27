@@ -9,20 +9,20 @@ Copyright (c) geekofia 2023 and beyond
 import { FileUpload } from '@/components/file-upload';
 import { Button } from '@/components/ui/button';
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
 } from '@/components/ui/dialog';
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -59,6 +59,7 @@ export default function InitialModal() {
   });
 
   const isLoading = form.formState.isSubmitting;
+  const disableInput = isLoading || !form.formState.isValid;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
@@ -118,7 +119,7 @@ export default function InitialModal() {
                   <FormControl>
                     <Input
                       disabled={isLoading}
-                      className="border-0 bg-stone-800 focus-visible:ring-0 focus-visible:ring-offset-0"
+                      className="border-0 bg-input focus-visible:ring-0 focus-visible:ring-offset-0"
                       placeholder="Enter server name"
                       {...field}
                     />
@@ -128,7 +129,7 @@ export default function InitialModal() {
               )}
             />
             <DialogFooter>
-              <Button variant="default" disabled={isLoading}>
+              <Button variant="default" disabled={disableInput}>
                 Create
               </Button>
             </DialogFooter>

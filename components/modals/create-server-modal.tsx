@@ -15,20 +15,20 @@ import * as z from 'zod';
 import { FileUpload } from '@/components/file-upload';
 import { Button } from '@/components/ui/button';
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
 } from '@/components/ui/dialog';
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useModal } from '@/hooks/use-modal-store';
@@ -58,6 +58,7 @@ export const CreateServerModal = () => {
   });
 
   const isLoading = form.formState.isSubmitting;
+  const disableInput = isLoading || !form.formState.isValid;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
@@ -80,8 +81,8 @@ export const CreateServerModal = () => {
     <Dialog open={isModalOpen} onOpenChange={handleClose}>
       <DialogContent className="overflow-hidden p-0">
         <DialogHeader className="px-6 pt-8">
-          <DialogTitle className="text-center text-2xl font-bold">
-            Customize your server
+          <DialogTitle className="text-center text-2xl font-bold capitalize">
+            create your server
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
             Give your server a personality with a name and an image. You can
@@ -120,7 +121,7 @@ export const CreateServerModal = () => {
                     <FormControl>
                       <Input
                         disabled={isLoading}
-                        className="border-0 bg-stone-800 focus-visible:ring-0 focus-visible:ring-offset-0"
+                        className="border-0 bg-input focus-visible:ring-0 focus-visible:ring-offset-0"
                         placeholder="Enter server name"
                         {...field}
                       />
@@ -131,7 +132,7 @@ export const CreateServerModal = () => {
               />
             </div>
             <DialogFooter className="px-6 py-4">
-              <Button variant="default" disabled={isLoading}>
+              <Button variant="default" disabled={disableInput}>
                 Create
               </Button>
             </DialogFooter>
