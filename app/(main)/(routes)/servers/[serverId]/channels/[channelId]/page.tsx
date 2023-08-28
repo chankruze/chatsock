@@ -11,6 +11,7 @@ import { redirect } from 'next/navigation';
 import { ChatHeader } from '@/components/chat/chat-header';
 import { ChatInput } from '@/components/chat/chat-input';
 import { ChatMessages } from '@/components/chat/chat-message';
+import { MediaRoom } from '@/components/media-room';
 import { currentProfile } from '@/lib/current-profile';
 import { prisma } from '@/lib/db';
 import { ChannelType } from '@prisma/client';
@@ -53,7 +54,8 @@ export default async function ChannelIdPage({ params }: ChannelIdPageProps) {
         name={channel.name}
         type="channel"
       />
-      {channel.type === ChannelType.TEXT && (
+
+      {channel.type === ChannelType.TEXT ? (
         <>
           <ChatMessages
             member={member}
@@ -79,7 +81,15 @@ export default async function ChannelIdPage({ params }: ChannelIdPageProps) {
             }}
           />
         </>
-      )}
+      ) : null}
+
+      {channel.type === ChannelType.VOICE ? (
+        <MediaRoom chatId={channel.id} video={false} audio={true} />
+      ) : null}
+
+      {channel.type === ChannelType.VIDEO ? (
+        <MediaRoom chatId={channel.id} video={true} audio={true} />
+      ) : null}
     </div>
   );
 }

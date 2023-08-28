@@ -11,6 +11,7 @@ import { redirect } from 'next/navigation';
 import { ChatHeader } from '@/components/chat/chat-header';
 import { ChatInput } from '@/components/chat/chat-input';
 import { ChatMessages } from '@/components/chat/chat-message';
+import { MediaRoom } from '@/components/media-room';
 import { getOrCreateConversation } from '@/lib/conversation';
 import { currentProfile } from '@/lib/current-profile';
 import { prisma } from '@/lib/db';
@@ -68,6 +69,11 @@ export default async function DirectMessage({
         serverId={params.serverId}
         type="conversation"
       />
+
+      {searchParams.video && (
+        <MediaRoom chatId={conversation.id} video={true} audio={true} />
+      )}
+
       {!searchParams.video && (
         <>
           <ChatMessages
