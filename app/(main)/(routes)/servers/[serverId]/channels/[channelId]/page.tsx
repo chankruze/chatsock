@@ -9,8 +9,10 @@ import { redirectToSignIn } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 
 import { ChatHeader } from '@/components/chat/chat-header';
+import { ChatInput } from '@/components/chat/chat-input';
 import { currentProfile } from '@/lib/current-profile';
 import { prisma } from '@/lib/db';
+import { ChannelType } from '@prisma/client';
 
 interface ChannelIdPageProps {
   params: {
@@ -44,12 +46,26 @@ export default async function ChannelIdPage({ params }: ChannelIdPageProps) {
   }
 
   return (
-    <div className="bg-channel flex h-full flex-col">
+    <div className="flex h-full flex-col bg-channel">
       <ChatHeader
         serverId={params.serverId}
         name={channel.name}
         type="channel"
       />
+      {channel.type === ChannelType.TEXT && (
+        <>
+          <div className="flex-1">Messages</div>
+          <ChatInput
+            name={channel.name}
+            type="channel"
+            apiUrl="/api/socket/messages"
+            query={{
+              channelId: channel.id,
+              serverId: channel.serverId,
+            }}
+          />
+        </>
+      )}
     </div>
   );
 }
