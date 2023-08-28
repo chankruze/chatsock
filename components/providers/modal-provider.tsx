@@ -12,13 +12,14 @@ import { useEffect, useState } from 'react';
 import { CreateChannelModal } from '@/components/modals/create-channel-modal';
 import { CreateServerModal } from '@/components/modals/create-server-modal';
 import { DeleteChannelModal } from '@/components/modals/delete-channel-modal';
+import { DeleteMessageModal } from '@/components/modals/delete-message-modal';
 import { DeleteServerModal } from '@/components/modals/delete-server-modal';
 import { EditChannelModal } from '@/components/modals/edit-channel-modal';
 import { EditServerModal } from '@/components/modals/edit-server-modal';
 import { LeaveServerModal } from '@/components/modals/leave-server-modal';
 import { ManageMembersModal } from '@/components/modals/manage-members-modal';
+import { MessageAttachmentModal } from '@/components/modals/message-attachment-modal';
 import { ServerInviteModal } from '@/components/modals/server-invite-modal';
-import { MessageAttachmentModal } from '../modals/message-attachment-modal';
 
 export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -45,6 +46,7 @@ export const ModalProvider = () => {
       <EditChannelModal />
       <DeleteChannelModal />
       <MessageAttachmentModal />
+      <DeleteMessageModal />
     </>
   );
 };

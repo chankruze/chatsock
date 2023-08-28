@@ -16,14 +16,14 @@ export const SocketIndicator = () => {
   if (!isConnected) {
     return (
       <Badge variant="outline" className="border-none bg-yellow-600 text-white">
-        Disconnected
+        Polling
       </Badge>
     );
   }
 
   return (
     <Badge variant="outline" className="border-none bg-emerald-600 text-white">
-      Connected
+      Real-time
     </Badge>
   );
 };
