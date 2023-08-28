@@ -144,7 +144,13 @@ export const ChatItem = ({
             <div className="flex items-center">
               <p
                 onClick={onSenderClick}
-                className="cursor-pointer text-sm font-semibold hover:underline"
+                className={cn(
+                  'cursor-pointer text-sm font-semibold hover:underline',
+                  sender.role === MemberRole.ADMIN &&
+                    'text-yellow-500 dark:text-yellow-400',
+                  sender.role === MemberRole.MODERATOR &&
+                    'text-blue-500  dark:text-blue-400'
+                )}
               >
                 {sender.profile.name}
               </p>
