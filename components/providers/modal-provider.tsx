@@ -9,6 +9,7 @@ Copyright (c) geekofia 2023 and beyond
 
 import { useEffect, useState } from 'react';
 
+import { CreateChannelModal } from '@/components/modals/create-channel-modal';
 import { CreateServerModal } from '@/components/modals/create-server-modal';
 import { EditServerModal } from '@/components/modals/edit-server-modal';
 import { ManageMembersModal } from '@/components/modals/manage-members-modal';
@@ -33,6 +34,7 @@ export const ModalProvider = () => {
       <ServerInviteModal />
       <EditServerModal />
       <ManageMembersModal />
+      <CreateChannelModal />
     </>
   );
 };
