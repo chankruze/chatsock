@@ -36,6 +36,8 @@
     --side-nav: 216 10% 90%; /* #E3E5E8 */
     --server-sidebar: 220 13% 95%; /* #F2F3F5 */
     --input: 136 0% 88% / 0.5; /* #8A9297 */
+    --channel: 0 0% 100%;
+    --conversation: 0 0% 100%;
 
     /* sizes */
     --radius: 0.5rem; /* 8px */
@@ -75,6 +77,8 @@
     --side-nav: 225 6% 13%; /* #1E1F22 */
     --server-sidebar: 220 7% 18%; /* #2B2D31 */
     --input: 12 6% 15%;
+    --channel: 223 7% 21%;
+    --conversation: 220 8% 23%;
   }
 }
 

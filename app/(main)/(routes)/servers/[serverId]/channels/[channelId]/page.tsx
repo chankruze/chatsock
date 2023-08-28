@@ -42,9 +42,5 @@ export default async function ChannelIdPage({ params }: ChannelIdPageProps) {
     redirect('/');
   }
 
-  return (
-    <div className="flex h-full flex-col bg-white dark:bg-[#313338]">
-      {channel.name}
-    </div>
-  );
+  return <div className="bg-channel flex h-full flex-col">{channel.name}</div>;
 }
