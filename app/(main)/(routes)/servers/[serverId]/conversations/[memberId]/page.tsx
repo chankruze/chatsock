@@ -8,6 +8,7 @@ Copyright (c) geekofia 2023 and beyond
 import { redirectToSignIn } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 
+import { ChatHeader } from '@/components/chat/chat-header';
 import { currentProfile } from '@/lib/current-profile';
 import { prisma } from '@/lib/db';
 
@@ -47,7 +48,13 @@ export default async function DirectMessage({
 
   return (
     <div className="bg-conversation flex h-full flex-col">
-      {currentMember.profile.name}
+      {/* TODO: implement logic to get proper data here */}
+      <ChatHeader
+        serverId={params.serverId}
+        name={profile.name}
+        type="conversation"
+        imageUrl={profile.avatar}
+      />
     </div>
   );
 }

@@ -8,6 +8,7 @@ Copyright (c) geekofia 2023 and beyond
 import { redirectToSignIn } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 
+import { ChatHeader } from '@/components/chat/chat-header';
 import { currentProfile } from '@/lib/current-profile';
 import { prisma } from '@/lib/db';
 
@@ -42,5 +43,13 @@ export default async function ChannelIdPage({ params }: ChannelIdPageProps) {
     redirect('/');
   }
 
-  return <div className="bg-channel flex h-full flex-col">{channel.name}</div>;
+  return (
+    <div className="bg-channel flex h-full flex-col">
+      <ChatHeader
+        serverId={params.serverId}
+        name={channel.name}
+        type="channel"
+      />
+    </div>
+  );
 }
