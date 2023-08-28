@@ -119,24 +119,21 @@ export const ChatMessages = ({
       <div className="mt-auto flex flex-col-reverse">
         {data?.pages?.map((group, i) => (
           <Fragment key={i}>
-            {group.items.map((message: MessageWithSenderWithProfile) => {
-              console.log(message);
-              return (
-                <ChatItem
-                  key={message.id}
-                  id={message.id}
-                  currentMember={member}
-                  sender={message.sender}
-                  content={message.content}
-                  fileUrl={message.fileUrl}
-                  deleted={message.isDeleted}
-                  timestamp={format(new Date(message.createdAt), DATE_FORMAT)}
-                  isUpdated={message.updatedAt !== message.createdAt}
-                  socketUrl={socketUrl}
-                  socketQuery={socketQuery}
-                />
-              );
-            })}
+            {group.items.map((message: MessageWithSenderWithProfile) => (
+              <ChatItem
+                key={message.id}
+                id={message.id}
+                currentMember={member}
+                sender={message.sender}
+                content={message.content}
+                fileUrl={message.fileUrl}
+                deleted={message.isDeleted}
+                timestamp={format(new Date(message.createdAt), DATE_FORMAT)}
+                isUpdated={message.updatedAt !== message.createdAt}
+                socketUrl={socketUrl}
+                socketQuery={socketQuery}
+              />
+            ))}
           </Fragment>
         ))}
       </div>

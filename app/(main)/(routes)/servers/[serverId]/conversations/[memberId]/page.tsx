@@ -9,6 +9,8 @@ import { redirectToSignIn } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 
 import { ChatHeader } from '@/components/chat/chat-header';
+import { ChatInput } from '@/components/chat/chat-input';
+import { ChatMessages } from '@/components/chat/chat-message';
 import { getOrCreateConversation } from '@/lib/conversation';
 import { currentProfile } from '@/lib/current-profile';
 import { prisma } from '@/lib/db';
@@ -49,8 +51,6 @@ export default async function DirectMessage({
     params.memberId
   );
 
-  console.log(conversation)
-
   if (!conversation) {
     return redirect(`/servers/${params.serverId}`);
   }
@@ -61,13 +61,38 @@ export default async function DirectMessage({
     participantOne.profileId === profile.id ? participantTwo : participantOne;
 
   return (
-    <div className="bg-conversation flex h-full flex-col">
+    <div className="flex h-full flex-col bg-conversation">
       <ChatHeader
         imageUrl={otherMember.profile.avatar}
         name={otherMember.profile.name}
         serverId={params.serverId}
         type="conversation"
       />
+      {!searchParams.video && (
+        <>
+          <ChatMessages
+            member={currentMember}
+            name={otherMember.profile.name}
+            chatId={conversation.id}
+            type="conversation"
+            apiUrl="/api/dms"
+            paramKey="conversationId"
+            paramValue={conversation.id}
+            socketUrl="/api/socket/dms"
+            socketQuery={{
+              conversationId: conversation.id,
+            }}
+          />
+          <ChatInput
+            name={otherMember.profile.name}
+            type="conversation"
+            apiUrl="/api/socket/dms"
+            query={{
+              conversationId: conversation.id,
+            }}
+          />
+        </>
+      )}
     </div>
   );
 }
