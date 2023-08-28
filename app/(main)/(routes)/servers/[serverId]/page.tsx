@@ -9,6 +9,7 @@ import { redirectToSignIn } from '@clerk/nextjs';
 
 import { currentProfile } from '@/lib/current-profile';
 import { prisma } from '@/lib/db';
+import { redirect } from 'next/navigation';
 
 interface ServerIdPageProps {
   params: {
@@ -50,13 +51,7 @@ const ServerIdPage = async ({ params }: ServerIdPageProps) => {
     return null;
   }
 
-  // TODO: uncomment this
-  // return redirect(`/servers/${params.serverId}/channels/${initialChannel?.id}`);
-  return (
-    <div>
-      <pre className="overflow-auto">{JSON.stringify(server, null, 2)}</pre>
-    </div>
-  );
+  return redirect(`/servers/${params.serverId}/channels/${initialChannel?.id}`);
 };
 
 export default ServerIdPage;
