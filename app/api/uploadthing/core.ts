@@ -22,7 +22,7 @@ export const ourFileRouter = {
     .onUploadComplete(() => {}),
 
   // This route takes an attached image OR video
-  messageAttachment: f(['image', 'video'])
+  messageAttachment: f(['image', 'video', 'pdf', 'text/csv'])
     .middleware(({ req }) => handleAuth())
     .onUploadComplete((data) => console.log('file', data)),
 

@@ -18,6 +18,7 @@ import { EditServerModal } from '@/components/modals/edit-server-modal';
 import { LeaveServerModal } from '@/components/modals/leave-server-modal';
 import { ManageMembersModal } from '@/components/modals/manage-members-modal';
 import { ServerInviteModal } from '@/components/modals/server-invite-modal';
+import { MessageAttachmentModal } from '../modals/message-attachment-modal';
 
 export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -43,6 +44,7 @@ export const ModalProvider = () => {
       <LeaveServerModal />
       <EditChannelModal />
       <DeleteChannelModal />
+      <MessageAttachmentModal />
     </>
   );
 };
