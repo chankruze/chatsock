@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "postinstall": "npm run build:prisma",
+    "dev": "npm run build:prisma && next dev",
+    "build:prisma": "npx prisma generate",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

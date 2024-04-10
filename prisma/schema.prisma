@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
+  provider     = "postgresql"
   url          = env("DATABASE_URL")
+  // directUrl    = env("DIRECT_URL")
   relationMode = "prisma"
 }
 
@@ -40,7 +41,7 @@ model Server {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@index([ownerId], name: "ownerId")
+  @@index([ownerId])
 }
 
 enum MemberRole {
@@ -67,8 +68,8 @@ model Member {
   conversationsReceived  Conversation[]  @relation("ParticipantTwo")
   directMessages         DirectMessage[]
 
-  @@index([profileId], name: "profileId")
-  @@index([serverId], name: "serverId")
+  @@index([profileId])
+  @@index([serverId])
 }
 
 enum ChannelType {
@@ -93,8 +94,8 @@ model Channel {
 
   messages Message[]
 
-  @@index([creatorId], name: "creatorId")
-  @@index([serverId], name: "serverId")
+  @@index([creatorId])
+  @@index([serverId])
 }
 
 model Message {
@@ -112,8 +113,8 @@ model Message {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@index([senderId], name: "senderId")
-  @@index([channelId], name: "channelId")
+  @@index([senderId])
+  @@index([channelId])
 }
 
 model Conversation {
@@ -150,6 +151,6 @@ model DirectMessage {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@index([senderId], name: "senderId")
-  @@index([conversationId], name: "conversationId")
+  @@index([senderId])
+  @@index([conversationId])
 }
